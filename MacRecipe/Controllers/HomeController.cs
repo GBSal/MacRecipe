@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MacRecipe.Services;
 
 namespace MacRecipe.Controllers
 {
@@ -26,5 +27,21 @@ namespace MacRecipe.Controllers
 
             return View();
         }
+
+
+        public ActionResult EmailTest(string Email)
+        {
+
+
+            var email = new SendGridEmailService();
+
+            email.SendEmail();
+
+            return View();
+
+        }
     }
+
+
+
 }
