@@ -1,0 +1,60 @@
+﻿@model MacRecipe.Models.EmailModel
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+    
+        <p>
+
+            Dear @Model.Name
+
+        </p>
+
+        <p>
+            I am taking part in Come Dine with Macmillan and I want you to join me!
+
+        </p>
+        <p>
+            <span style="font-weight:bold">What?</span> <br/>
+        </p>
+        <p>
+            You are invited to my dinner party but it is up to you what I cook up! There are 3 dishes to choose from, the more you donate, the fancier the food!
+
+        </p>
+        
+        <p>
+            <span style="font-weight:bold">How?</span> <br />
+        </p>
+        <p>
+            Just click on the link below to cast your vote. Once everyone has made their selection the most popular dish will be served! Please bring your donations on the night.
+
+            <a href="http://macrecipe.azurewebsites.net/?token=@Model.InviteToken">http://macrecipe.azurewebsites.net/?token=@Model.InviteToken</a>
+        </p>
+
+
+        <p>
+            <span style="font-weight:bold">When?</span> <br />
+        </p>
+        <p>
+            1st December. More details to follow nearer the time!
+
+        </p>
+
+        <p>
+          
+            <br />
+            Thank you for your support, I look forward to seeing what I will be cooking for you!
+            <br />
+      
+        </p>
+        <p>
+            @Model.HostName
+        </p>
+
+    </div>
+</body>
+</html>

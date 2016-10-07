@@ -6,76 +6,90 @@ using System.Web;
 using System.Net;
 using System.Net.Mail;
 using SendGrid;
+using System.IO;
+using MacRecipe.Models;
+using RazorEngine.Templating;
 
 namespace MacRecipe.Services
 {
     public class SendGridEmailService
     {
 
+        string  templateFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "EmailTemplates");
+        string inviteSubject = "You're invited to dinner for Come dine with Macmillan!";
+        string notifySubject = "Come dine with Macmillan - your guest have voted!";
 
-        string emailFrom = @"MacRecipe <MacRecipe@Macmillan.org.uk>";
 
-
-
-        public void InviteFriends(List<string> recipients  , string message)
+        public void InviteEmail(List<string> recipients, string recipeId) 
         {
+            string path = templateFolderPath + @"\InviteEmail.cshtml";
 
-            var email = GetEmailMessage(recipients, message);
-            email.From = new MailAddress(emailFrom);
+            var model = new EmailModel { Name = "Ellie", HostName = "Mohammad", InviteToken= recipeId };
 
-            SendMessage(email);
+            var template = new TemplateService();
+
+            var emailBody = template.Parse(File.ReadAllText(path),model,null,null);
+
+            this.SendEmail(recipients, inviteSubject, emailBody);
+
         }
 
 
-        public void NotifyRecipeSelection(List<string> recipients ,string message)
+        public void NotityEmail(List<string> recipients)
         {
+            string path = templateFolderPath + @"\NotifyEmail.cshtml";
 
-            var email = GetEmailMessage(recipients, message);
-            email.From = new MailAddress(emailFrom);
+            var model = new EmailModel { HostName = "Mohammad" };
 
-            SendMessage(email);
+            var template = new TemplateService();
 
-        }
-        
-            
-        private void SendMessage(SendGridMessage message)
-        {
-           
+            var emailBody = template.Parse(File.ReadAllText(path), model, null, null);
 
-            
-            var username = "azure_53bd6fe4f76e58059d0a3fa78038c8d9 @azure.com";
-
-            var pswd = "Password1";
-
-            var credentials = new NetworkCredential(username, pswd);
-            
-            var transportWeb = new Web(credentials);
-
-            transportWeb.Deliver(message);
+            this.SendEmail(recipients, notifySubject, emailBody);
 
         }
 
-        private SendGridMessage GetEmailMessage(List<string> recipients, string message)
-        {
 
+        private void SendEmail(List<string> recipients , string subject , string message)
+        {
+            // Create the email object first, then add the properties.
             var myMessage = new SendGridMessage();
 
+            // Add the message properties.
+            myMessage.From = new MailAddress("mohammadsalman@hotmail.com");
 
-            myMessage.From = new MailAddress("MacRecipe@macmillan.uk");
+            // Add multiple addresses to the To field.
+            //List<String> recipients = new List<String>
+            //    {
+            //        @"Mac Recipe <MacRecipe_it24@mailinator.com>",
+
+            //    };
 
             myMessage.AddTo(recipients);
 
-            myMessage.Subject = "";
-
-            //Add the HTML message here
-            myMessage.Html = $"<p>{message}</p>";
+            myMessage.Subject = subject;
 
 
+            myMessage.Html = message;
+            myMessage.Text = message;
 
-            return myMessage;
+
+            // Create network credentials to access your SendGrid account
+            var username = "azure_53bd6fe4f76e58059d0a3fa78038c8d9@azure.com";
+            var pswd = "Password1";
+
+
+
+            var credentials = new NetworkCredential(username, pswd);
+            // Create an Web transport for sending email.
+            var transportWeb = new Web(credentials);
+
+
+            transportWeb.Deliver(myMessage);
+
+
+
         }
-
-
 
     }
 }
