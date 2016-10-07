@@ -4,47 +4,148 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Content/css")*@
+    <link href="/Content/styles.css" rel="stylesheet">
+    @*<link href="/Content/bootstrap.css" rel="stylesheet">*@
+    <link href="https://uat-topper.macmillan.org.uk/assets/1.0.0.73/stylesheets/styles.css" rel="stylesheet" type="text/css" />
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#01a245">
+    <div class="mcr-site-header-simplified">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar" style="color:white"> Button here</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <div class="row">
+                <div class="large-12 small-12">
+                  
 
-                <div id="logo">
-                    <img src="~/Content/images/Logo.jpg" alt="Paddle the Wye Logo" border="0" /></a>
+                    <div class="newlogo">
+                        <a href="#">
+                            <img src="~/Content/images/newlogo.jpg" alt="logo" />
+                        </a>
+                    </div>
+                   
                 </div>
-                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                </ul>
-                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        <br/>
-        <br />
-        <br />
-        <br />
-
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - MacRecipe</p>
-        </footer>
+    <div class="mcr-step-list-wrap active-create">
+        <div class="container">
+            <div class="row">
+                <div class="large-12 small-12">
+                    <ol class="step-list">
+                        <li class="li-create active">
+                            <span class="step-count">1</span>
+                            <span class="step-title">Home</span>
+                            <div class="skew-div"></div>
+                        </li>
+                        <li class="li-activate ">
+                            <span class="step-count">2</span>
+                            <span class="step-title">Invite</span>
+                            <div class="skew-div"></div>
+                        </li>
+                        <li class="li-activate ">
+                            <span class="step-count">3</span>
+                            <span class="step-title">Confirmation</span>
+                            <div class="skew-div"></div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
+
+        
+
+    <div class="container">
+        <div class="mcs-recipes">
+
+            @RenderBody()
+
+        </div>
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Invites", "Invites")</li>
+            <li>@Html.ActionLink("SelectRceipe", "SelectRceipe")</li>
+        </ul>
+        @Html.Partial("_LoginPartial")
+
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="footer-nav">
+            <ul>
+                <li><a href="http://contensis-web-uat.macmillan.org.uk/">Home</a></li>
+                <li><a href="http://contensis-web-uat.macmillan.org.uk/information-and-support/index.html">Information and support</a></li>
+                <li><a href="http://contensis-web-uat.macmillan.org.uk/get-involved/all-ways-to-help.html">Get involved</a></li>
+                <li><a href="http://contensis-web-uat.macmillan.org.uk/in-your-area/choose-location.html">In your area</a></li>
+                <li><a href="http://contensis-web-uat.macmillan.org.uk/AboutUs/">About us</a></li>
+                <li><a href="http://qa-community8.macmillan.org.uk">Online community</a></li>
+                <li><a href="http://contensis-web-uat.macmillan.org.uk/donate" class="donate-cta">Donate</a></li>
+            </ul>
+        </div>
+        <div class="wrapper">
+            <div class="mobile-social-links">
+                <h2 class="footer-follow">Follow Us</h2>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com/macmillancancer" title="Facebook" class="facebook"></a></li>
+                    <li><a href="https://twitter.com/macmillancancer" title="Twitter" class="twitter"></a></li>
+                    <li><a href="http://www.youtube.com/user/macmillancancer" title="YouTube" class="youtube"></a></li>
+                    <li><a href="http://www.pinterest.com/macmillancancer" title="Pinterest" class="pinterest"></a></li>
+                </ul>
+            </div>
+
+            <div class="column-one">
+                <a href="http://contensis-web-uat.macmillan.org.uk/" class="footer-logo" role="link" title="Home - Macmillan Cancer Support"><img src="https://uat-topper.macmillan.org.uk/assets/images/Macmillan-Cancer-Support-green@2x.png" alt="Home - Macmillan Cancer Support"></a>
+
+            </div>
+
+            <div class="column-two">
+                <h2>About this site</h2>
+                <ul>
+                    <li><a href="http://contensis-web-uat.macmillan.org.uk/information-and-support/understanding-cancer/about-our-website.html">About our website</a></li>
+                    <li><a href="http://contensis-web-uat.macmillan.org.uk/terms-and-conditions/how-we-use-cookies.html">How we use cookies</a></li>
+                    <li><a href="http://contensis-web-uat.macmillan.org.uk/terms-and-conditions/terms-and-conditions.html">Terms and conditions</a></li>
+                    <li><a href="http://contensis-web-uat.macmillan.org.uk/terms-and-conditions/privacy-policy.html">Privacy policy</a></li>
+                    <li><a href="http://contensis-web-uat.macmillan.org.uk/terms-and-conditions/accessibility.html">Accessibility</a></li>
+                    <li><a href="http://contensis-web-uat.macmillan.org.uk/donate/">Make a donation</a></li>
+                </ul>
+            </div>
+
+            <div class="column-three">
+                <h2>Macmillan sites</h2>
+                <ul>
+                    <li><a href="http://be.macmillan.org.uk/be/default.aspx">be.Macmillan</a></li>
+                    <li><a href="http://qa-community8.macmillan.org.uk/">Community</a></li>
+                    <li><a href="http://shop.macmillan.org.uk/">Macmillan shop</a></li>
+                    <li><a href="http://learnzone.org.uk/">Learn zone</a></li>
+                    <li><a href="http://contensis-web-uat.macmillan.org.uk/Aboutus/Workingwithus/WorkingForMacmillan/WorkingforMacmillan.aspx">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="column-four">
+                <div class="mobile-wrapper">
+                    <h2>Get in touch</h2>
+                    <p>If you have any questions about Macmillan, or would like to talk to someone about cancer, we have a team of experts who can help.</p>
+                    <a title="Click here to contact us" href="http://contensis-web-uat.macmillan.org.uk/AboutUs/ContactUs/ContactUs.aspx">Contact Us</a>
+                </div>
+                <div class="mobile-wrapper">
+                    <h2 class="footer-follow">Follow Us</h2>
+                    <ul class="social-links">
+                        <li><a href="https://www.facebook.com/macmillancancer" title="Facebook" class="facebook"></a></li>
+                        <li><a href="https://twitter.com/macmillancancer" title="Twitter" class="twitter"></a></li>
+                        <li><a href="http://www.youtube.com/user/macmillancancer" title="YouTube" class="youtube"></a></li>
+                        <li><a href="http://www.pinterest.com/macmillancancer" title="Pinterest" class="pinterest"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <em>&copy; @DateTime.Now.Year Macmillan Cancer Support</em>
+                <p>© Macmillan Cancer Support, registered charity in England and Wales (261017), Scotland (SC039907) and the Isle of Man (604). A company limited by guarantee, registered in England and Wales company number 2400969. Isle of Man company number 4694F. Registered office: 89 Albert Embankment, London SE1 7UQ.</p>
+            </div>
+        </div>
+    </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
