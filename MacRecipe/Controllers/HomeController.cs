@@ -31,36 +31,23 @@ namespace MacRecipe.Controllers
 
         public ActionResult EmailTest(string Email)
         {
+            
+            
 
+            var email = new SendGridEmailService();
 
-
-            List<string> recipients = new List<string>();
-
-            if (!string.IsNullOrEmpty(Email))
-            {
-
-                var email = new SendGridEmailService();
-
-                if (Email.Contains(';'))
+            List<String> recipients = new List<String>
                 {
-                    var emails = Email.Split(';');
+                    @"Mohammad Salman<msalman@macmillan.org.uk>",
+                    @"Mohammad Salman<macrecipe@mailinator.com>"
 
-                    foreach (var mail in emails)
-                    {
-                        recipients.Add(mail);
-                    }
+                };
 
 
-                }
-                else
-                {
-                    recipients.Add(Email);
+            email.InviteEmail(recipients,"XDFSERDSD");
 
-                }
+            email.NotityEmail(recipients);
 
-
-                email.InviteFriends(recipients, "Email body here , Sorry guys, I'm testing emails..... ");
-            }
             return View();
 
         }
