@@ -1,7 +1,62 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Invite your friends";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="row">
 
-<p>Use this area to provide additional information.</p>
+    <div class="large-8 small-12">
+        <h1 class="small mt20">@ViewBag.Title</h1>
+        <p>@ViewBag.Message</p>
+
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="large-8 small-12">
+        <form class="macmillan-form mcs-invite">
+            <fieldset class="field">
+                <div class="row">
+                    <div class="large-12 small-12">
+                        <label for="friendOne">Email address</label>
+                        <input class="text-input" type="text" id="friendOne" name="friend.One">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 small-12">
+                        <label for="friendTwo">Email address</label>
+                        <input class="text-input" type="text" id="friendTwo" name="friend.Two">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 small-12">
+                        <label for="friendThree">Email address</label>
+                        <input class="text-input" type="text" id="friendThree" name="friend.Three">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 small-12">
+                        <div class="form-checkbox">
+                            <input aria-required="true" class="checkbox" id="PersonalDetails_DateOfBirth_Under18Consent" name="PersonalDetails.DateOfBirth.Under18Consent" type="checkbox" value="true">
+                            <input name="PersonalDetails.DateOfBirth.Under18Consent" type="hidden" value="false">
+                            <label class="single-checkbox" for="PersonalDetails_DateOfBirth_Under18Consent">
+                                I agree to Macmillan's Terms and Conditions
+                                We will use your details to fulfil your request, and to deliver and improve our services for people affected by cancer.
+                                Please see our Privacy Policy for more information on how we use your information.
+                                <em class="asterisk"><span>*</span></em>
+                            </label>
+
+
+                        </div>
+                        <p>
+                            You can change the way we communicate with you at any time by
+                            contacting us on <a href="mailto:fundraising@macmillan.org.uk">fundraising@macmillan.org.uk</a> or 0300 1000 200.
+                        </p>
+                        <button class="btn mid-green mt10">Invite your friends</button>
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </form>
+    </div>
+</div>

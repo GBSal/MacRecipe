@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="large-12 small-12">
+    <div class="large-8 small-12">
         <h1 class="small mt20">MacRecipe</h1>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in consectetur mi. Proin placerat tempus tempor. Sed pulvinar blandit varius.
@@ -17,43 +17,44 @@
 
 <div class="row">
     <div class="large-12 small-12">
-        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "macmillan-form" }))
         {
             <fieldset class="field">
-
-                @for (var i = 0; i < Model.Count; i++)
-                {
                 <div class="row">
+                    @for (var i = 0; i < Model.Count; i++)
+                    {
+
                     <!-- Recipe One -->
-                    <div class="large-6 small-12 recipe">
-                        <div class="row">
-                            <div class="large-6">
-                                <div class="form-checkbox">
+                        <div class="large-6 small-12 recipe">
+                            <div class="row">
+                                <div class="large-6">
+                                    <div class="form-checkbox">
 
-                                    @*<input aria-required="false" class="checkbox" id="recipeOne" name="recipe.One" type="checkbox" value="true">*@
-                                    @Html.EditorFor(x=>Model[i].Cook , new {@class="checkbox"})
-                                    @Html.HiddenFor(x => Model[i].Id)
-                                    
-                                    
-                                    @*@Html.DisplayFor(x => Model[i].Summary)*@
-                                    <label class="single-checkbox" for="recipeOne">
-                                        @*<img src="~/Content/images/chicken-curry768x768_tcm9-149087.jpg" alt="Chicken curry" />*@
-                                        <img src="@Model[i].Thumbnail" />
+                                        @*<input aria-required="false" class="checkbox" id="recipeOne" name="recipe.One" type="checkbox" value="true">*@
+                                        @Html.EditorFor(x => Model[i].Cook, new { @class = "checkbox" })
+                                        @Html.HiddenFor(x => Model[i].Id)
 
-                                    </label>
+
+                                        @*@Html.DisplayFor(x => Model[i].Summary)*@
+                                        <label class="single-checkbox" for="">
+                                            @*<img src="~/Content/images/chicken-curry768x768_tcm9-149087.jpg" alt="Chicken curry" />*@
+                                            <img src="@Model[i].Thumbnail" />
+
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="large-6">
+                                    <h2 class="small">@Html.DisplayFor(x => Model[i].Title)</h2>
+                                    <p class="small">@Html.DisplayFor(x => Model[i].Donation)</p>
+
                                 </div>
                             </div>
-
-                            <div class="large-6">
-                                <h2 class="small">@Html.DisplayFor(x => Model[i].Title)</h2>
-                                <p class="small"><span class="icon icon-watch"></span> @Html.DisplayFor(x => Model[i].Donation)</p>
-
-                            </div>
                         </div>
-                    </div>
 
+
+                    }
                 </div>
-                }
             <!-- Submit -->
                 <div class="row">
                     <div class="large-12">
