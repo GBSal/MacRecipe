@@ -12,48 +12,69 @@ namespace MacRecipe.Services
     public class SendGridEmailService
     {
 
-            
-        public void SendEmail()
+
+        string emailFrom = @"MacRecipe <MacRecipe@Macmillan.org.uk>";
+
+
+
+        public void InviteFriends(List<string> recipients  , string message)
         {
-            // Create the email object first, then add the properties.
-            var myMessage = new SendGridMessage();
 
-            // Add the message properties.
-            myMessage.From = new MailAddress("mohammadsalman@hotmail.com");
+            var email = GetEmailMessage(recipients, message);
+            email.From = new MailAddress(emailFrom);
 
-            // Add multiple addresses to the To field.
-            List<String> recipients = new List<String>
-                {
-                    @"Mohammad Salman <salman_it24@hotmail.com>",
-    
-                };      
-
-            myMessage.AddTo(recipients);
-
-            myMessage.Subject = "Testing the SendGrid Library";
-
-            //Add the HTML and Text bodies
-            myMessage.Html = "<p>Hello World!</p>";
-            myMessage.Text = "Hello World plain text!";
+            SendMessage(email);
+        }
 
 
+        public void NotifyRecipeSelection(List<string> recipients ,string message)
+        {
 
+            var email = GetEmailMessage(recipients, message);
+            email.From = new MailAddress(emailFrom);
 
+            SendMessage(email);
 
-            // Create network credentials to access your SendGrid account
-            var username = "azure_53bd6fe4f76e58059d0a3fa78038c8d9@azure.com";
+        }
+        
+            
+        private void SendMessage(SendGridMessage message)
+        {
+           
+
+            
+            var username = "azure_53bd6fe4f76e58059d0a3fa78038c8d9 @azure.com";
+
             var pswd = "Password1";
 
             var credentials = new NetworkCredential(username, pswd);
-            // Create an Web transport for sending email.
+            
             var transportWeb = new Web(credentials);
 
-
-            transportWeb.Deliver(myMessage);
-
-
+            transportWeb.Deliver(message);
 
         }
+
+        private SendGridMessage GetEmailMessage(List<string> recipients, string message)
+        {
+
+            var myMessage = new SendGridMessage();
+
+
+            myMessage.From = new MailAddress("MacRecipe@macmillan.uk");
+
+            myMessage.AddTo(recipients);
+
+            myMessage.Subject = "";
+
+            //Add the HTML message here
+            myMessage.Html = $"<p>{message}</p>";
+
+
+
+            return myMessage;
+        }
+
 
 
     }
