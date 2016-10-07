@@ -11,6 +11,11 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
+        <div>
+            <span>Error Msg : @ViewBag.Msg</span>
+
+        </div>
+            
         <span class="col-md-2 control-label">Email To </span>
         <div class="col-md-10">
             <input type="text" id="Email" name="Email" placeholder="email" />
