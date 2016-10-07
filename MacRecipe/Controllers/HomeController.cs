@@ -14,16 +14,16 @@ namespace MacRecipe.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Invites()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Send out invites";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult SelectRceipe ()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Select your recipe";
 
             return View();
         }
