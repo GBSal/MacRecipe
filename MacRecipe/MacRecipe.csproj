@@ -324,6 +324,8 @@
     <Content Include="Content\webfonts\macmillan_headline_02_12-webfont.ttf" />
     <Content Include="Content\webfonts\macmillan_headline_02_12-webfont.woff" />
     <Content Include="Content\webfonts\web.config" />
+    <Content Include="EmailTemplates\InviteEmail.cshtml" />
+    <Content Include="EmailTemplates\NotifyEmail.cshtml" />
     <None Include="Properties\PublishProfiles\MacRecipe.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
