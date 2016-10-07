@@ -6,19 +6,28 @@
 
 <div class="row">
     <div class="large-8 small-12">
-        <h1 class="small mt20">MacRecipe</h1>
+        <h1 class="small mt20">Come dine with <span class="large">Macmillan!</span></h1>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in consectetur mi. Proin placerat tempus tempor. Sed pulvinar blandit varius.
-            Pellentesque varius placerat urna. Maecenas augue felis, porta ac mollis sit amet, feugiat ut eros.
+            Gather your nearest and dearest and invite them to choose the dish they would like you to make for Come dine with Macmillan.
+            Select from the options below for your dinner party and invite your friends to vote for their favourite.
+        </p>
+        <p>
+            The swankier the dish, the more money is raised!
+
         </p>
     </div>
-    
+    <div class="large-4 small-12">
+      
+        <a class="btn dark-green btn-fullwidth mt20 mb20" href="#">Pay in</a>
+    </div>
 </div>
 
 <div class="row">
     <div class="large-12 small-12">
+
         @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "macmillan-form" }))
         {
+
             <fieldset class="field">
                 <div class="row">
                     @for (var i = 0; i < Model.Count; i++)
@@ -28,15 +37,16 @@
                         <div class="large-6 small-12 recipe">
                             <div class="row">
                                 <div class="large-6">
+
                                     <div class="form-checkbox">
 
                                         @*<input aria-required="false" class="checkbox" id="recipeOne" name="recipe.One" type="checkbox" value="true">*@
-                                        @Html.EditorFor(x => Model[i].Cook, new { @class = "checkbox" })
+                                        @Html.CheckBoxFor(x => Model[i].Cook, new {id=i,  @class = "checkbox" })
                                         @Html.HiddenFor(x => Model[i].Id)
 
 
                                         @*@Html.DisplayFor(x => Model[i].Summary)*@
-                                        <label class="single-checkbox" for="">
+                                        <label class="single-checkbox" for="@i">
                                             @*<img src="~/Content/images/chicken-curry768x768_tcm9-149087.jpg" alt="Chicken curry" />*@
                                             <img src="@Model[i].Thumbnail" />
 
@@ -55,7 +65,7 @@
 
                     }
                 </div>
-            <!-- Submit -->
+                <!-- Submit -->
                 <div class="row">
                     <div class="large-12">
                         <button class="btn mid-green">Invite your friends</button>
